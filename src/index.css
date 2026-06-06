@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-cyber-bg: var(--cyber-bg);
+  --color-cyber-card: var(--cyber-card);
+  --color-cyber-border: var(--cyber-border);
+  --color-cyber-cyan: var(--cyber-cyan);
+  --color-cyber-purple: var(--cyber-purple);
+  --color-cyber-text: var(--cyber-text);
+  --color-cyber-muted: var(--cyber-muted);
+}
+
+:root {
+  --cyber-bg: #080808;
+  --cyber-card: #121212;
+  --cyber-border: #1a1a1a;
+  --cyber-cyan: #c5a059;
+  --cyber-purple: #ab884c;
+  --cyber-text: #e0e0e0;
+  --cyber-muted: #737373;
+}
+
+:root.light {
+  --cyber-bg: #fafaf9;
+  --cyber-card: #ffffff;
+  --cyber-border: #e7e5e4;
+  --cyber-cyan: #9a732a;
+  --cyber-purple: #7c5a15;
+  --cyber-text: #1c1917;
+  --cyber-muted: #78716c;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-cyber-bg);
+    color: var(--color-cyber-text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-cyber-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-cyber-cyan);
+    border-radius: 3px;
+  }
+}
+
+/* Animations and Cyber utilities */
+.glow-cyber {
+  box-shadow: 0 0 25px rgba(197, 160, 89, 0.12);
+}
+
+.glow-cyber-hover:hover {
+  box-shadow: 0 0 35px rgba(197, 160, 89, 0.28);
+  border-color: rgba(197, 160, 89, 0.4);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #f5f5f7 30%, #c5a059);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
