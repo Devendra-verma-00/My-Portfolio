@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   X, Shield, Lock, Award, CheckCircle, AlertTriangle, 
-  Terminal, Database, Server, RefreshCw, Cpu, Activity, Info,
-  UploadCloud
+  Terminal, Database, Server, RefreshCw, Cpu, Activity, Info
 } from 'lucide-react';
 import { Project, Certification } from '../types';
 
@@ -221,12 +220,11 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
 
               {/* Certification Real Image / Dynamic Uploader Section */}
               {type === 'certification' && (() => {
-                const displayImg = localCertImg || (!imageError && certification?.image) || null;
+                const displayImg = !imageError && certification?.image ? certification.image : null;
                 return (
                   <div className="flex flex-col items-center justify-center py-4 animate-[fadeIn_0.15s_ease-out] w-full max-w-2xl mx-auto">
                     {displayImg ? (
                       <div className="flex flex-col items-center w-full">
-                        {/* Real image container - LOCKED */}
                         <div className="relative w-full bg-[#0b0f19]/80 border border-cyber-cyan/30 rounded-2xl overflow-hidden p-2 shadow-2xl transition-all duration-300">
                           <img 
                             src={displayImg} 
@@ -237,7 +235,6 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
                           />
                         </div>
 
-                        {/* Certificate Metadata below image */}
                         <div className="w-full mt-4 p-4 bg-cyber-card/40 border border-cyber-border rounded-xl flex flex-col sm:flex-row justify-between items-center gap-3">
                           <div className="text-left w-full sm:w-auto">
                             <h4 className="font-serif italic text-base text-cyber-text leading-tight">{certification?.name}</h4>
@@ -249,56 +246,11 @@ export const InteractiveModal: React.FC<InteractiveModalProps> = ({
                             </div>
                           )}
                         </div>
-
-                        {/* Verified Meta stamp & Action */}
-                        <div className="mt-4 flex flex-col sm:flex-row items-center gap-4 text-xs font-mono w-full justify-between px-2">
-                          <div className="flex gap-2 text-xs font-mono text-slate-500">
-                            <span className="flex items-center gap-1 text-cyber-cyan">
-                              <CheckCircle className="w-4 h-4" /> RECIPIENT RECORD SECURED
-                            </span>
-                            <span>·</span>
-                            <span className="uppercase text-cyber-purple">{certification?.issuer} DIRECT RECORD</span>
-                          </div>
-                          {localCertImg && (
-                            <button 
-                              onClick={handleRemoveImage}
-                              className="text-rose-400 hover:text-rose-300 hover:underline transition-all cursor-pointer font-semibold"
-                            >
-                              Reset / Upload New
-                            </button>
-                          )}
-                        </div>
                       </div>
                     ) : (
-                      /* Stunning, high-fidelity dynamic uploader & dropzone */
-                      <div 
-                        onDragOver={handleDragOver}
-                        onDragLeave={handleDragLeave}
-                        onDrop={handleDrop}
-                        className={`w-full max-w-lg border-2 border-dashed rounded-3xl p-8 text-center flex flex-col items-center justify-center gap-4 transition-all duration-300 ${
-                          isDragOver 
-                            ? 'border-cyber-cyan bg-cyber-cyan/10 scale-[1.02]' 
-                            : 'border-cyber-border hover:border-cyber-cyan/40 bg-cyber-card/10'
-                        }`}
-                      >
-                        <UploadCloud className={`w-12 h-12 ${isDragOver ? 'text-cyber-cyan animate-bounce' : 'text-cyber-cyan/60'}`} />
-                        <div>
-                          <p className="text-sm font-semibold font-sans mb-1 text-cyber-text">Upload Your Certificate Image</p>
-                          <p className="text-xs text-cyber-muted font-sans px-4">
-                            Since certificate files are stored separately from this hosting deployment, you can upload your credential image to showcase it live.
-                          </p>
-                        </div>
-                        
-                        <label className="px-5 py-2.5 bg-cyber-cyan text-black text-xs font-semibold rounded-lg hover:bg-cyber-cyan/80 transition-all cursor-pointer shadow-lg font-mono">
-                          Browse Local File
-                          <input 
-                            type="file" 
-                            accept="image/*" 
-                            onChange={handleFileChange} 
-                            className="hidden" 
-                          />
-                        </label>
-                        <span className="text-[10px] text-cyber-muted font-mono uppercase tracking-widest">Supports PNG, JPG, JPEG (Saved securely in your browser)</span>
+                      <div className="w-full max-w-lg border border-cyber-border rounded-3xl p-8 text-center bg-cyber-card/10">
+                        <p className="text-base font-semibold text-cyber-text mb-2">Certificate image is unavailable.</p>
+                        <p className="text-xs text-cyber-muted">Image upload is disabled on the deployed website.</p>
                       </div>
                     )}
                   </div>

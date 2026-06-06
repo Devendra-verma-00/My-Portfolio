@@ -799,7 +799,7 @@ export default function App() {
       </main>
 
       <footer className="mt-24 border-t border-cyber-border py-8 text-center text-xs font-mono text-cyber-muted relative z-10 bg-cyber-bg">
-        <p>© 2026 DEVENDRA VERMA · ALL LOGS AUDITED · DESIGNED IN AI STUDIO</p>
+        <p>© 2026 DEVENDRA VERMA · ALL LOGS AUDITED</p>
       </footer>
 
       {/* Scroll Top Button */}
